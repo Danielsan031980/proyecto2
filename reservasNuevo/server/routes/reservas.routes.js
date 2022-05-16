@@ -12,6 +12,7 @@ module.exports = app => {
   app.get("/api/users", authenticate, UserController.getAll);
   app.get('/api/user/:id', authenticate, UserController.getUser);
   app.put("/api/user/update/:id", authenticate, UserController.updateUser);
+  app.delete("/api/user/delete/:id", authenticate, UserController.deleteUser);
 
   //rutas Reservas
   app.post("/api/reservas/create", ReservasController.createNewReserva)

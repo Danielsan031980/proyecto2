@@ -76,6 +76,12 @@ module.exports.Register = async (req, res) => {
 
   module.exports.updateUser = (req, res) => {
     User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
-      .then(updateUser => res.json({ reserva: updateUser }))
+      .then(updateUser => res.json({ user: updateUser }))
       .catch(err => res.status(400).json(err));
+  };
+
+  module.exports.deleteUser = (req, res) => {
+    User.deleteOne({ _id: req.params.id })
+      .then(result => res.json({ data: result }))
+      .catch(err => res.json({ message: "Something went wrong", error: err }));
   };
