@@ -6,12 +6,16 @@ const UserSchema = new mongoose.Schema(
   {
     nombre: {
       type: String,
-      required: [true, "First name is required"],
     },
-    idFirebase: String,
+    idFirebase: {
+      String
+    },
     image:{
       type: String, 
          unique: true,		 
+    },
+    idFirebase:{
+      type:String
     },
     email: {
       type: String,
@@ -31,7 +35,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: [true, "Rol is required"],
     },
-    phoneNumber:{
+    telefono:{
       type: Number, 			 
     }
   },

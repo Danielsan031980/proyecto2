@@ -5,7 +5,7 @@ import React from 'react';
 
 
 
-const RoomCard = ({src, title,description}) => {
+const RoomCard = ({src, title, description}) => {
     const classes = useStyle()
     
 

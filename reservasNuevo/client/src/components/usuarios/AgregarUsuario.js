@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+/* import React, { useState } from 'react'
 import uniquid from "uniqid"
 import axios from "axios"
 import Swal from 'sweetalert2'
@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from "../../contexts/authContext";
 
 
-function AgregarReserva() {
+function AgregarUsuario() {
 
 const { user } = useAuth();
 const [nombre, setNombre] = useState('')
@@ -17,8 +17,8 @@ const [error, setError] = useState('');
 
 const navigate = useNavigate()
 
-function agregarReserva(){
-  var reserva ={
+function agregarUsuario(){
+  var usuario ={
     nombre: nombre,
     email: email,
     telefono: telefono,
@@ -26,24 +26,23 @@ function agregarReserva(){
     idusuario: uniquid(),
     idFirebase: user.uid,
   }
-  axios.post('/api/reserva/agregarreserva', reserva)
+  axios.post('/api/usuario/agregarusuario', usuario)
   .then(res =>{
+    navigate ('/lista')
+    //alert (res.data)
     Swal.fire({ 
       position: 'top-start',
       icon: 'success',
-      title: 'Reserva Creada Correctamente',
+      title: 'Usuario Creado Correctamente',
       showConfirmButton: false,
       timer: 1500
-    }) //alert (res.data)
-    navigate ('/lista')
+    })
   })
   .catch(err =>{
     setError(err.response?.data?.message);
   })
 }
-  useEffect(() =>{
-      console.log(user.uid)
-  }, [user])
+
   return (
 
     <div className="App">
@@ -56,10 +55,10 @@ function agregarReserva(){
     <div  className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul  className="navbar-nav me-auto mb-2 mb-lg-0">
         <li  className="nav-item">
-          <a  className="nav-link active" aria-current="page" href="/lista">Mis reservas</a>
+          <a  className="nav-link active" aria-current="page" href="/lista">Lista Usuarios</a>
         </li>
         <li  className="nav-item">
-          <a  className="nav-link" href="agregarreserva">Crear Reserva </a>
+          <a  className="nav-link" href="agregarusuario">Agregar Usuario</a>
         </li>
         <li  className="nav-item">
           <a  className="nav-link" href="/"> Logout </a>
@@ -67,10 +66,10 @@ function agregarReserva(){
         </ul>
         </div>  
     </div>
-</nav> 
+</nav>  */
 
 {/*  Formulario Reserva */}
-    <div  className="container">
+{/*     <div  className="container">
       <div className="row">
          <h2 className="mt-4">Crea una reserva </h2> 
          <h5 className="mt-4"> { error || '' } </h5> 
@@ -93,7 +92,7 @@ function agregarReserva(){
           <label htmlFor="habitacion" className="form-label">Habitación</label>
           <input type="text" className="form-control" placeholder="Burbuja Familiar" value={habitacion} onChange={(e) =>{setHabitacion(e.target.value)}}></input>
       </div>
-        <button onClick={agregarReserva}   className="btn btn-success"> Crear Reserva </button>
+        <button onClick={agregarUsuario}   className="btn btn-success"> Crear Reserva </button>
 
         </div>
       </div>
@@ -102,4 +101,4 @@ function agregarReserva(){
   )
 }
 
-export default AgregarReserva;
+export default AgregarUsuario; */}

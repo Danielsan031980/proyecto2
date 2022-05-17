@@ -83,6 +83,5 @@ const useStyle = makeStyles(()=>({
 
 
 
-export default SearchPage
+export default SearchPage;
  
-

@@ -9,71 +9,30 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
+    animation: App-logo-spin infinite 20s linear;
   }
 }
 
 .App-header {
+  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-}
-.btn .btn-primary{
-  fill: rgba(47,46,46,1);
-  background-color: rgba(237,209,50,1) !important;
-  color: rgba(47,46,46,1) !important;
+  color: white;
 }
 
 .App-link {
-  color: rgb(112, 76, 182);
-}
-.formulario-inicio  {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  flex-direction: column;
-  width: 80%;
-  margin: 1rem auto;
-  
-}
-.register {
-  margin: 0.5rem 0;
-  border: 1px solid black;
-  border-radius: 4px;
-  background-color: white;
-  width: 40%;
-  padding: 1rem;
-
-}
-.login {
-
-  border: 1px solid black;
-  border-radius: 4px;
-  background-color: white;
-  width: 40%;
-  padding: 1rem;
-  height: 20rem;
-  margin: 0.5rem 0;
-  align-items: flex-end;
- 
- 
-
+  color: #61dafb;
 }
 
-
-
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
   }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
+  to {
+    transform: rotate(360deg);
   }
 }

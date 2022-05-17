@@ -81,4 +81,4 @@ export const chips =[
     { key: 4, label: "more filters"},
 ];
 
-export default mockData; 
+export default mockData;

@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { authContext, useAuth } from "../../contexts/authContext";
 //import { useAuth } from "../contexts/authContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { Alert } from "./Alert";
+import axios from 'axios';
 
 export function Login() {
+  const [errors, setErrors] = useState([]);
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -19,26 +21,74 @@ export function Login() {
   };
 
   const handleSubmit = async (e) => {
+    
     console.log(user.email, user.password )
     e.preventDefault();
+    
+    
     try {
       // await login(user.email, user.password);
+      axios.post("/api/login", user)
+      .then(
+        res=>{    
+          console.log(res.data._id)
+          navigate("/home/" + res.data._id)
+       
+          } 
+        )
+      .catch(err=>{
+          const errorResponse = err.response.data.errors; // Get the errors from err.response.data
+          const errorArr = []; // Define a temp error array to push the messages in
+          for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
+              errorArr.push(errorResponse[key].message)
+          }
+          // Set Errors
+          setErrors(errorArr);
+          console.log(errorArr)
+      }) 
       
-      navigate("/home");
-    } catch (error) {
-      setError(error.message);
-    }
+      } catch (error) {
+        setError(error.message);
+      }
   };
-
   const handleGoogleLogin = async () => {
     const google = await singGoogle();
-    console.log(google)
-    
+
+      // await login(user.email, user.password);
+      const valor = {
+        email:google.user.email,
+        nombre:google.user.displayName,
+        pass:google.user.uid,
+        confirmPassword:google.user.uid,
+        idFirebase:google.user.uid,
+        rolType:"huesped"
+      }
+      axios.post("/api/user/register", valor)
+      .then(  
+        res=>{    
+          console.log(res.data._id)
+          navigate("/home/" + res.data._id)
+       
+        } 
+      )
+      .catch(err=>{
+        const errorResponse = err.response.data.errors; // Get the errors from err.response.data
+          const errorArr = []; // Define a temp error array to push the messages in
+          for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
+            errorArr.push(errorResponse[key].message)
+          }
+          // Set Errors
+          setErrors(errorArr);
+          console.log(errorArr)
+      }) 
+      console.log(google.user.email)
+      console.log(google.user.displayName)
+      console.log(google.user.uid)
     // navigate("/home");
   };
 
   useEffect(() =>{
-  }, [user])
+  }, [])
   return (
     <div className=" w-full max-w-xs m-auto  ">
 

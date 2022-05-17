@@ -57,4 +57,3 @@ export function Counter() {
     </div>
   );
 }
-

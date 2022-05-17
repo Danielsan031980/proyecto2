@@ -2,7 +2,7 @@ import { makeStyles, Paper, Typography } from "@material-ui/core";
 //import { People } from "@material-ui/icons";
 import accounting from "accounting";
 //import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
@@ -11,7 +11,7 @@ const Results = ({ src, title, description, price, stock }) => {
   const navigate = useNavigate();
 
   const handleClick =()=> {
-    navigate ("/reservas")
+    navigate ("/agregarreserva")
   }
   
 
@@ -39,8 +39,9 @@ const Results = ({ src, title, description, price, stock }) => {
         </Typography>
 
         <div className={classes.reserva}>
-                <button onClick={handleClick} type="submit" stranslate="reservation.CONTINUE" className='btn btn-primary' ng-click="confirm()" ng-hide="processing"><span class="strans">Realizar Reserva</span></button>
+                <button onClick={handleClick} type="submit" stranslate="reservation.CONTINUE" className='btn btn-primary' ng-click="confirm()" ng-hide="processing"><span class="strans">  {  <Link to="/agregarreserva" >  Crear Reserva </Link>  }  </span></button>
                 <button ng-show="processing &amp;&amp; !demo()" class="btn btn-confirm processing ng-hide"></button>
+               
         </div>
 
         </div>

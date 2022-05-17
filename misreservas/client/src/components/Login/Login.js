@@ -29,7 +29,7 @@ export function Login() {
   };
 
   const handleGoogleLogin = async () => {
-    await singGoogle();
+    const google = await singGoogle();
     navigate("/lista");
   };
 

@@ -3,14 +3,26 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 module.exports.Register = async (req, res) => {
-    try {
-      const user = new User(req.body);
-      await user.save();
-  
-      const jwtToken = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
-  
-      return res.status(200).json({ email: user.email, _id: user._id, token: jwtToken });
-    } catch (err) {
+  try {
+      const firebaseId = await User.find({
+        ubicacionId: { 
+          $eq: req.params.idFirebase
+        }, 
+      })
+      
+      if(firebaseId.length === 1){
+        const cadena = firebaseId[0]._id.toString()
+        console.log(firebaseId[0])
+        return res.status(200).json({ email: req.body.email, _id: cadena,  });
+      }
+      else{
+        const user = new User(req.body);
+        await user.save();
+        const jwtToken = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
+        return res.status(200).json({ email: user.email, _id: user._id, token: jwtToken });
+      }
+    } 
+    catch (err) {
       console.log(err);
       res.status(400).json(err);
     }

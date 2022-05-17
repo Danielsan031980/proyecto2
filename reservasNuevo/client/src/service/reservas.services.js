@@ -1,4 +1,4 @@
-const axios = require("axios")
+/* const axios = require("axios")
 
 export const nuevaReserva = (values) => { 
    return axios.post("http://localhost:8000/api/reservas", values)
@@ -42,4 +42,4 @@ export const eliminarUnaReserva = (id) => {
     } catch (err) {
         return null;
     }
-};
+}; */
